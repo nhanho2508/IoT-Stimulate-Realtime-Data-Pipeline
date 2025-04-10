@@ -1,6 +1,7 @@
-from pyspark.sql import SparkSession
-# from pyspark.sql.types import StructType, StructField, StringType, TimestampType
-from config import configuration
+from pyspark.sql.types import StructType, StructField, StringType, DoubleType, TimestampType, IntegerType
+from pyspark.sql.functions import from_json, col
+from pyspark.sql import DataFrame
+
 
 def main():
     spark = SparkSession.builder.appName("SmartCityStreaming") \
