@@ -58,7 +58,7 @@ def main():
         StructField("weatherCondition", StringType(), True),
         StructField("precipitation", DoubleType(), True),
         StructField("windSpeed", DoubleType(), True),
-        StructField("humidty", IntegerType(),True),
+        StructField("humidity", IntegerType(),True),
         StructField("airQualityIndex", DoubleType(),True)
     ])
 
@@ -86,7 +86,7 @@ def main():
                 .withWatermark('timestamp', '2 minutes'))
 
     def streamWriter(input: DataFrame, checkpointFolder, output):
-        return (input.writeSteam
+        return (input.writeStream
                 .format('parquet')
                 .option('checkpointLocation', checkpointFolder)
                 .option('path', output)
