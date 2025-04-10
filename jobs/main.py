@@ -24,7 +24,7 @@ LONGTITUDE_INCREMENT = (BIRMINGHAM_COORDINATES['longtitude'] - LONDON_COORDINATE
 
 KAFKA_BOOTSTRAP_SERVERS = os.getenv('KAFKA_BOOTSTRAP_SERVERS', 'localhost:9092')
 VEHICLE_TOPIC = os.getenv('VEHICLE_TOPIC', 'vehicle_data')
-GPS_TOPIS = os.getenv('GPS_TOPIC', 'gps_data')
+GPS_TOPIC = os.getenv('GPS_TOPIC', 'gps_data')
 TRAFFIC_TOPIC = os.getenv('TRAFFIC_TOPIC', 'traffic_data')
 WEATHER_TOPIC = os.getenv('WEATHER_TOPIC', 'weather_data')
 EMERGENCY_TOPIC = os.getenv('EMERGENCY_TOPIC', 'emergency_data')
@@ -63,7 +63,7 @@ def generate_weather_data(devcie_id, timestamp, location):
     return {
         'id' : uuid.uuid4(),
         'deviceId': devcie_id,
-        'locatoin':location,
+        'location':location,
         'timestamp':timestamp,
         'temperature' : random.uniform(-5, 26),
         'weatherCondition':random.choice(['Sunny','Cloudy','Rainy','Snowy']),
@@ -76,11 +76,11 @@ def generate_weather_data(devcie_id, timestamp, location):
 def generate_emergency_data(device_id, timestamp, location ):
     return {
         'id': uuid.uuid4(),
-        'device_id': device_id,
-        'incident_id' : uuid.uuid4(),
+        'deviceId': device_id,
+        'incidentId' : uuid.uuid4(),
         'type':random.choice(['Accident', 'Fire', 'Medical', 'Police', 'None']),
         'location':location,
-        'status':random.choice(['Actice', 'Resolved']),
+        'status':random.choice(['Active', 'Resolved']),
         'description': 'Description of the accident'
     }
 
@@ -106,7 +106,7 @@ def generate_vehicle_data(device_id):
         'speed': random.uniform(10, 40),
         'direction': 'North-East',
         'make':'Audi',
-        'mode':'R8',
+        'model':'R8',
         'year':'2023',
         'fuelType':'Hybrid'
     }
@@ -150,7 +150,7 @@ def simulate_journey(producer, device_id):
 
 
         produce_data_to_kafka(producer, VEHICLE_TOPIC, vehicle_data)
-        produce_data_to_kafka(producer, GPS_TOPIS, gps_data)
+        produce_data_to_kafka(producer, GPS_TOPIC, gps_data)
         produce_data_to_kafka(producer, TRAFFIC_TOPIC, traffic_camera_data)
         produce_data_to_kafka(producer, WEATHER_TOPIC, weather_data)
         produce_data_to_kafka(producer, EMERGENCY_TOPIC, emergency_incident_data)
