@@ -22,7 +22,7 @@ The streaming pipeline consists of the following core components:
 
 - **Apache Kafka with ZooKeeper**: Kafka serves as the robust messaging backbone, enabling real-time data transfer from IoT sensors to processing frameworks. ZooKeeper manages and coordinates Kafka clusters, ensuring efficient data handling even at massive scales typical of smart city infrastructures.
 
-- **Apache Spark**: Spark is employed as a high-performance data processing engine, retrieving streaming data directly from Kafka and subsequently saving it to Amazon S3 cloud storage ([spark-city.py script](https://github.com/yangforbig/SmartCity-End-to-End-Data-Engineering/blob/main/jobs/spark-city.py)).
+- **Apache Spark**: Spark is employed as a high-performance data processing engine, retrieving streaming data directly from Kafka and subsequently saving it to Amazon S3 cloud storage ([iot-data.py script](https://github.com/yangforbig/SmartCity-End-to-End-Data-Engineering/blob/main/jobs/iot-data.py)).
 
 - **AWS Cloud Services**:
     - **S3 Storage**: Secure data storage for raw and processed datasets.
