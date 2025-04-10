@@ -56,7 +56,7 @@ def main():
         StructField("timestamp", TimestampType(), True),
         StructField("temperature", DoubleType(), True),
         StructField("weatherCondition", StringType(), True),
-        StructField("precipitation", DoubeType(), True),
+        StructField("precipitation", DoubleType(), True),
         StructField("windSpeed", DoubleType(), True),
         StructField("humidty", IntegerType(),True),
         StructField("airQualityIndex", DoubleType(),True)
